@@ -27,13 +27,14 @@ export default class Login extends React.Component {
 
   OnLogin = () => {
     this.setState({ loading: true });
+    setTimeout(() => {this.setState({ loading: false })}, 2000);
     firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(
         () => {
-          this.setState({ loading: true });
-          setTimeout(() => {this.setState({ loading: false })}, 1000);
+          // this.setState({ loading: true });
+          // setTimeout(() => {this.setState({ loading: false })}, 1000);
         },
         error => {
           Alert.alert(error.message);
